@@ -14,18 +14,18 @@ public class BallAnimation extends Transition {
 
     @Override
     protected void interpolate(double v) {
-       double dx=this.ball.getSpeed()*Math.cos(Math.toRadians(this.ball.getTheta()));
-       double dy=-this.ball.getSpeed()*Math.sin(Math.toRadians(this.ball.getTheta()));
+       double dx=this.ball.getVx();
+       double dy=-this.ball.getVy();
        this.ball.Move(dx,dy);
        this.ball.collision();
        if(this.ball.hitT()){
-           this.ball.setTheta(-this.ball.getTheta());
+           this.ball.setVy(-this.ball.getVy());
        }
         if(this.ball.hitR()||this.ball.hitL()){
-            this.ball.setTheta(180-this.ball.getTheta());
+            this.ball.setVx(-this.ball.getVx());
         }
         if(this.ball.hitB()){
-            this.ball.setTheta(360-this.ball.getTheta());
+            this.ball.setVy(-this.ball.getVy());
         }
     }
 }
